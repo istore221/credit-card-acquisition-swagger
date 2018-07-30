@@ -6,14 +6,12 @@ info:
 
 servers:
   - url: http://{subdomain}.athena.com/{version}
-    description: The main prod server
     variables:
       subdomain:
         default: cca
       version:
         enum:
           - v1
-          - v2
         default: v1
 
 security:
@@ -39,39 +37,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"
-        '422':
-          description: Unprocessable Entity
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ValidationError"
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicError"
-
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicError"
-
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicError"
-
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicError"
 
 components:
   schemas:
